@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Anonymous visitors cannot open the admin workspace",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "AppDeploy email-link login screen",
+      "anonymous route protection",
+      "Super Admin-only workspace"
+    ],
+    "description": "Verifies the workspace remains hidden until AppDeploy restores an authenticated, authorized owner session.",
+    "steps": [
+      "Open the Alpha Mate Admin URL in a signed-out browser session",
+      "Inspect the page before signing in"
+    ],
+    "expected": "The admin dashboard is not shown; the secure sign-in screen displays the authorized Super Admin email."
+  },
+  {
+    "name": "Authorized temporary Super Admin can sign in and verify Firebase",
+    "viewport": "desktop",
+    "covers": [
+      "temporary Super Admin email allowlist",
+      "AppDeploy auth session restoration",
+      "protected Firebase status endpoint",
+      "Firebase Admin SDK Firestore connectivity"
+    ],
+    "description": "Verifies the authorized owner can authenticate and the protected backend reports the Firebase Firestore connection status.",
+    "steps": [
+      "Sign in using alphamateapp@gmail.com and complete the email link",
+      "Wait for the admin workspace to load",
+      "Inspect the Firebase connection banner"
+    ],
+    "expected": "The owner sees the admin workspace and a Firebase connection status showing the configured project when the service account has Firestore access."
+  },
+  {
+    "name": "Non-owner accounts are denied Super Admin access",
+    "viewport": "desktop",
+    "covers": [
+      "backend admin email allowlist",
+      "unauthorized account denial"
+    ],
+    "description": "Verifies an authenticated email outside the explicit owner allowlist cannot access the admin API or workspace.",
+    "steps": [
+      "Open the sign-in screen",
+      "Authenticate with an email other than alphamateapp@gmail.com"
+    ],
+    "expected": "The session is rejected and the admin dashboard remains inaccessible."
+  },
+  {
+    "name": "Owner can sign out and the workspace is protected again",
+    "viewport": "mobile",
+    "covers": [
+      "AppDeploy auth sign-out",
+      "protected UI after sign-out",
+      "mobile sign-in layout"
+    ],
+    "description": "Verifies signing out clears the owner session and returns the user to the secure login screen on mobile.",
+    "steps": [
+      "Sign in as alphamateapp@gmail.com",
+      "Open the profile menu and choose Sign out"
+    ],
+    "expected": "The session is cleared and the secure sign-in screen appears instead of the admin dashboard."
+  },
+  {
+    "name": "Firebase connection failures are shown without exposing credentials",
+    "viewport": "desktop",
+    "covers": [
+      "Firebase service-account secret handling",
+      "Firestore connectivity failure response",
+      "safe backend error handling"
+    ],
+    "description": "Verifies a Firestore connection failure produces a safe status response and never exposes the service-account JSON or private key.",
+    "steps": [
+      "Sign in as the authorized owner while the Firestore service account is unavailable or lacks access",
+      "Inspect the Firebase connection banner and network response"
+    ],
+    "expected": "A generic connection warning is shown; no credential values, private key, or raw secret content is returned."
+  }
+]

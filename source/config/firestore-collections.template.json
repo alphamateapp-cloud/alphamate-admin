@@ -1,0 +1,32 @@
+{
+  "_instructions": "Fill collection names exactly as they exist in the Alpha Mate Firestore database. Leave unknown values as empty strings. This file contains collection mapping only; NEVER put service-account private keys or API secrets here.",
+  "firestoreCollections": {
+    "users": "",
+    "liveSessions": "",
+    "partyRooms": "",
+    "reels": "",
+    "agencies": "",
+    "agencyRequests": "",
+    "coinWallets": "",
+    "coinLedger": "",
+    "gifts": "",
+    "storeItems": "",
+    "moderators": "",
+    "supportTickets": "",
+    "transactions": "",
+    "vipTiers": "",
+    "userLevels": "",
+    "staffAccounts": "",
+    "auditLogs": "",
+    "appSettings": ""
+  },
+  "fieldMappings": {
+    "userDocumentId": "",
+    "userUid": "",
+    "username": "",
+    "coinBalance": "",
+    "userStatus": "",
+    "createdAt": "",
+    "updatedAt": ""
+  }
+}

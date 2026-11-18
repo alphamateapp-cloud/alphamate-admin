@@ -1,0 +1,16 @@
+{
+  "methods": [
+    "email"
+  ],
+  "headline": "Alpha Mate Admin",
+  "subtitle": "Secure owner access. Sign in using your authorized company email.",
+  "style": {
+    "mode": "dark",
+    "accentColor": "#9237d8",
+    "backgroundColor": "#0b0712",
+    "panelColor": "#1b1028",
+    "textColor": "#f7efff",
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "borderRadius": 12
+  }
+}
